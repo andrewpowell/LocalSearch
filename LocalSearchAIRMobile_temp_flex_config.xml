@@ -1,0 +1,17 @@
+<flex-config xmlns="http://www.adobe.com/2006/flex-config">
+  <target-player>10</target-player>
+  <compiler>
+    <debug>true</debug>
+    <source-path>
+      <path-element>src</path-element>
+    </source-path>
+    <library-path append="true">
+      <path-element>/UM/GlobalLibs/MapQuestSDK.swc</path-element>
+      <path-element>/UM/GlobalLibs/swiz-framework-v1.0.0-RC2.swc</path-element>
+    </library-path>
+  </compiler>
+  <file-specs>
+    <path-element>src/LocalSearch.mxml</path-element>
+  </file-specs>
+  <output>/UM/LocalSearchAIRMobile/out/production/LocalSearchAIRMobile/LocalSearch.swf</output>
+</flex-config>

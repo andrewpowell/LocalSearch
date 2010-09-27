@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<swiz:BeanProvider xmlns:fx="http://ns.adobe.com/mxml/2009"
+	               xmlns:mx="library://ns.adobe.com/flex/halo"
+                   xmlns:swiz="http://swiz.swizframework.org"
+                   xmlns:controllers="com.universalmind.controllers.*"
+                   xmlns:models="com.universalmind.models.*"
+                   xmlns:delegates="com.universalmind.delegates.*">
+
+    <fx:Declarations>
+
+
+        <delegates:SearchDelegate id="searchDelegate"/>
+
+        <controllers:GeolocationController id="locationController"/>
+        <controllers:SearchController id="searchController"/>
+
+        <models:ApplicationModel id="appModel"/>
+        <models:SearchModel id="searchModel"/>
+
+    </fx:Declarations>
+</swiz:BeanProvider>

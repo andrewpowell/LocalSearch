@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 height="100%" width="100%" >
+
+	<s:layout>
+		<s:BasicLayout/>
+	</s:layout>
+
+    <fx:Script>
+        <![CDATA[
+
+        import com.mapquest.tilemap.MapCorner;
+        import com.mapquest.tilemap.MapCornerPlacement;
+        import com.mapquest.tilemap.Size;
+        import com.mapquest.tilemap.controls.standard.ZoomControl;
+        import com.universalmind.events.InitializeGeocoderEvent;
+        import com.universalmind.models.ISearchModel;
+
+        import mx.events.FlexEvent;
+
+        [Inject]
+        [Bindable]
+        public var searchModel:ISearchModel;
+
+        private static const IDLE_THRESHOLD : int = 300;
+        private var lastUpdate : Number = 0;
+
+        [PostConstruct]
+        public function setupMap():void {
+            searchModel.map = searchMap;
+            var control:ZoomControl = new ZoomControl();
+            control.width=control.width*2;
+            control.height=control.height*2;
+            this.searchMap.addControl(control,new MapCornerPlacement(MapCorner.BOTTOM_RIGHT, new Size(75,50)));
+            dispatchEvent(new InitializeGeocoderEvent(InitializeGeocoderEvent.INITIALIZE));
+        }
+
+        public function findButton_onClick(event:MouseEvent):void {
+            searchModel.doSearch(searchTerm.text);
+        }
+
+        //The map doesn't respond to gesture events on Android Devices.  Go figure.
+
+        /*
+        public function searchMap_onGestureZoom(event:TransformGestureEvent):void{
+            if( getTimer() - lastUpdate > IDLE_THRESHOLD ){
+                if(event.scaleX > 1 && event.scaleY > 1){
+                    searchMap.zoom++;
+                }
+                if(event.scaleX < 1 && event.scaleY < 1){
+                    searchMap.zoom--;
+                }
+
+                lastUpdate = getTimer();
+            }
+        }
+        */
+
+        ]]>
+    </fx:Script>
+
+    <s:VGroup width="100%" height="100%" gap="5">
+    <s:Label text="What are you searching for?" fontSize="25"/>
+    <s:TextInput id="searchTerm" height="50" fontSize="25" width="100%"/>
+    <s:Button label="Find It" height="75" width="150" fontSize="35" click="findButton_onClick(event)"/>
+    <mq:TilemapComponent id="searchMap"
+                         key="Fmjtd%7Cluu72h02lu%2Cbs%3Do5-5zz5l"
+                         zoom="3"
+                         visible="true"
+                         width="100%"
+                         height="95%"
+                         xmlns:mq="com.mapquest.tilemap.*"/>
+    </s:VGroup>
+
+</s:Group>
