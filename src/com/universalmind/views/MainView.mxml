@@ -66,7 +66,7 @@
     <s:TextInput id="searchTerm" height="50" fontSize="25" width="100%"/>
     <s:Button label="Find It" height="75" width="150" fontSize="35" click="findButton_onClick(event)"/>
     <mq:TilemapComponent id="searchMap"
-                         key="Fmjtd%7Cluu72h02lu%2Cbs%3Do5-5zz5l"
+                         key="YOUR KEY GOES HERE"
                          zoom="3"
                          visible="true"
                          width="100%"

@@ -1,0 +1,7 @@
+This is the sample AIR for Android application that I developed during 360|Flex.  This is meant to be a proof of concept with what can be done with AIR for Android.
+
+Requires:
+Swiz Framework
+Mapquest API version 6 (requires your own key to compile)
+Flex 4
+AIR 2.5 (available on labs.adobe.com)
